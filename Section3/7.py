@@ -1,13 +1,18 @@
 n = int(input())
+a = [list(map(int, input().split())) for _ in range(n)]
 
-ch = [0] * (n + 1)
-cnt = 0
+total = 0
+start = end = n // 2
 
-for i in range(2, n + 1):
-    if ch[i] == 0:
-        cnt += 1
-        
-        for j in range(i, n + 1, i):
-            ch[j] = 1
 
-print(cnt)
+for i in range(n):
+    for j in range(start, end + 1):
+        total += a[i][j]
+    if i < n // 2:
+        start -= 1
+        end += 1
+    else:
+        start += 1
+        end -= 1
+
+print(total)

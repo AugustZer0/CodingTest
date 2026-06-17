@@ -1,25 +1,34 @@
-import math
-
-def reverse(x):
-    return x[::-1]
-
-def isPrime(x):
-    if x <= 1:
-        return False
-    
-    for i in range(2, int(math.sqrt(x) + 1)):
-        if x % i == 0:
-            return False
-    return x
-        
-
 n = int(input())
-a = list(input().split())
+a = [list(map(int, input().split())) for _ in range (n)]
+m = int(input())
 
 
-for i in a:
-    reverse_num = int(reverse(i))
-    result = isPrime(reverse_num)
+# 회전
+for i in range(m):
+    x, y, z = map(int, input().split())
+    # 인덱스로 인해서 +1 처리
+    x -= 1
     
-    if result != False:
-        print(result, end = ' ')
+    # 좌로 이동
+    if y == 0:
+        a[x] = a[x][z:] + a[x][:z]
+    
+    # 우로 이동
+    else:
+        a[x] = a[x][-z:] + a[x][:-z]
+
+# 모래시계 더하기
+result = start = 0
+end = n
+
+for i in range(n):
+    result += sum(a[i][start:end])
+    
+    if i < n // 2:
+        start += 1
+        end -= 1
+    else:
+        start -= 1
+        end += 1
+
+print(result)

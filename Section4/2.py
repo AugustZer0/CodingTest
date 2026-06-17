@@ -1,17 +1,24 @@
-n = input()
+k, n = map(int, input().split())
 
-tmp = ""
-count = 0
+a = [int(input()) for _ in range(k)]
 
-for x in n:
-    if x.isdecimal():
-        tmp += x
+lt = 1
+rt = max(a)
+answer = 0
 
-tmp = int(tmp)
+def count(len):
+    count = 0
+    for x in a:
+        count += (x // len)
+    return count
 
-for i in range(1, tmp + 1):
-    if tmp % i == 0:
-        count += 1
+while lt <= rt:
+    mid = (lt + rt) // 2
 
-print(tmp)
-print(count)
+    if count(mid) >= n:
+        answer = mid
+        lt = mid + 1
+    else:
+        rt = mid - 1
+
+print(answer)

@@ -1,15 +1,5 @@
-from itertools import combinations
-
-n, k = map(int, input().split())
-
-a = list(map(int, input().split()))
-l = []
-
-for comb in combinations(a, 3):
-    l.append(sum(comb))
-
-l = list(set(l))
-l.sort(reverse=True)
-
-print(l[k - 1])
-            
+cards = list(range(1, 21))
+for _ in range(10):
+    start, end = map(int, input().split())
+    cards[start-1:end] = cards[start-1:end][::-1]
+print(*(cards))

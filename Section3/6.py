@@ -1,28 +1,27 @@
-def digit_sum(x):
-    res = 0
-    for digit in x:
-        res += int(digit)
-    return res
-
 n = int(input())
-a = list(input().split())
+a = [list(map(int, input().split())) for _ in range(n)]
 
-max_sum = -1
-ans = ""
+tmp = []
 
-for num in a:
-    current_sum = digit_sum(num)
+for i in a:
+    tmp.append(sum(i))
     
-    if current_sum > max_sum:
-        max_sum = current_sum
-        ans = num
+for i in range(n):
+    total = 0
+    for j in range(n):
+        total += a[j][i]
+    tmp.append(total)
+    
+    
+total = 0
+for i in range(n):
+    total += a[i][i]
+tmp.append(total)
 
-print(ans)
+total = 0
+for i in range(n - 1, -1, -1):
+    total += a[i][n - 1 - i]
+tmp.append(total)
 
-a = ["125", "15232", "97"]
-
-for x in a:
-    res = 0
-    for digit in x:
-        res += int(digit)
-    print(res)
+print(max(tmp))
+    

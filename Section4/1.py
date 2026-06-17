@@ -1,8 +1,20 @@
-n = int(input())
+n, m = map(int, input().split())
 
-for i in range(n):
-    txt = input().lower()
-    if txt == txt[::-1]:
-        print(f"#{i + 1} YES")
+a = list(map(int, input().split()))
+
+a.sort()
+
+lt = 0
+rt = n - 1
+
+while lt <= rt:
+    mid = (lt + rt) // 2
+    if a[mid] == m:
+        print(mid + 1)
+        break
+
+    elif a[mid] > m:
+        rt = mid - 1
+
     else:
-        print(f"#{i + 1} NO")
+        lt = mid + 1
