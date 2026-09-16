@@ -17,6 +17,29 @@ A[N]이 공백으로 분리되어 주어진다. 각각의 A[x]는 30,000을 넘�
 ▣ 출력예제 1
 5
 """
+
 n, m = map(int, input().split())
 arr = list(map(int, input().split()))
 
+lt = 0
+rt = 1
+cnt = 0
+total = arr[lt]
+
+while True:
+    if total < m:
+        if rt < n:
+            total += arr[rt]
+            rt += 1
+        else:
+            break
+
+    elif total == m:
+        cnt += 1
+        total -= arr[lt]
+        lt += 1
+
+    else:
+        total -= arr[lt]
+        lt += 1
+print(cnt)
