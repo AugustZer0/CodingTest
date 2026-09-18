@@ -1,19 +1,16 @@
 data = input()
-
-tmp = []
-result = ""
+result = []
 value = 0
 
 for i in data:
     if i.isalpha():
-        tmp.append(i)
+        result.append(i)
     else:
         value += int(i)
 
-tmp.sort()
+result.sort()
 
-for j in tmp:
-    result += j
+if value != 0:
+    result.append(str(value))
 
-result += str(value)
-print(result)
+print(''.join(result))
