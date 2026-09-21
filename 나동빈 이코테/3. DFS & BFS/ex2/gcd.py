@@ -1,0 +1,15 @@
+# 최대공
+a, b = map(int, input().split())
+
+def gcd(a, b):
+    if a % b == 0:
+        return b
+    else:
+        return gcd(b, a % b)
+
+# 최소공배수
+def lcm(a, b):
+    return (a * b) // gcd(a, b)
+
+print(gcd(a, b))
+print(lcm(a, b))
