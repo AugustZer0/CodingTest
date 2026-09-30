@@ -21,30 +21,3 @@ DVD를 가급적 줄이려고 한다. 고민 끝에 지니레코드는 M개의 D
 ▣ 출력예제 1
 17
 """
-n, m = map(int, input().split())
-songs = list(map(int, input().split()))
-
-def Count(capacity):
-    dvd_count = 1
-    total = 0
-    for length in songs:
-        if total + length > capacity:
-            dvd_count += 1
-            total = length
-        else:
-            total += length
-
-    return dvd_count
-
-lo, hi = max(songs), sum(songs)
-result = hi
-
-while lo <= hi:
-    mid = (lo + hi) // 2
-    if Count(mid) <= m:
-        hi = mid - 1
-        result = mid
-    else:
-        lo = mid + 1
-
-print(result)
