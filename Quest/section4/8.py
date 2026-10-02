@@ -17,3 +17,48 @@ N명의 승객 몸무게가 주어졌을 때 승객 모두가 탈출하기 위�
 ▣ 출력예제 1
 3
 """
+
+# 일반적인 방식
+"""
+n, m = map(int, input().split())
+
+count = 0
+
+arr = list(map(int, input().split()))
+arr.sort()
+
+while arr:
+    if arr[0] + arr[-1] > m:
+        arr.pop()
+        count += 1
+    else:
+        arr.pop(0)
+        arr.pop()
+        count += 1
+print(count)
+"""
+
+# 큐를 사용한 방식
+from collections import deque
+n, m = map(int, input().split())
+
+count = 0
+
+arr = list(map(int, input().split()))
+arr.sort()
+
+queue = deque(arr)
+
+while queue:
+    if len(queue) == 1:
+        count += 1
+        break
+    if queue[0] + queue[-1] > m:
+        queue.pop()
+        count += 1
+    else:
+        queue.popleft()
+        queue.pop()
+        count += 1
+
+print(count)
