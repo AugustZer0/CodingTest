@@ -27,3 +27,22 @@
 (183, 65), (180, 70), (170, 72)가 선발됩니다. (181, 60)은 (183, 65) 때문에 탈락하고, (172, 67)은
 (180, 70) 때문에 탈락합니다.
 """
+
+n = int(input())
+arr = []
+
+for _ in range(n):
+    h, w = map(int, input().split())
+    arr.append((h, w))
+
+arr.sort(reverse=True)
+
+tmp = 0
+cnt = 0
+
+for x, y in arr:
+    if y > tmp:
+        cnt += 1
+        tmp = y
+
+print(cnt)

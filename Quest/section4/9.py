@@ -28,3 +28,28 @@ LRLL
 3
 LRR
 """
+
+n = int(input())
+arr = list(map(int, input().split()))
+
+tmp = 0
+result = ""
+
+while arr:
+    if arr[0] > tmp:
+        if arr[0] > arr[-1] > tmp:
+            tmp = arr.pop()
+            result += "R"
+        else:
+            tmp = arr.pop(0)
+            result += "L"
+    elif arr[-1] > tmp:
+        tmp = arr.pop()
+        result += "L"
+    else:
+        break
+
+print(len(result))
+print(result)
+
+# 투포인터로도 가능함
