@@ -25,3 +25,30 @@
 ▣ 출력예제 1
 200
 """
+
+"""
+이번에 구하고자 하는 것은 랜선의 최대 길이이기에, lt, rt는 길이로 설정
+"""
+
+n, m = map(int, input().split())
+
+arr = sorted([int(input()) for _ in range(n)])
+
+lt = 0
+rt = arr[-1]
+
+def Count(len):
+    cnt = 0
+    for x in arr:
+        cnt += x // len
+    return cnt
+
+while lt <= rt:
+    mid = (lt + rt) // 2
+    if Count(mid) >= m:
+        res = mid
+        lt = mid + 1
+    else:
+        rt = mid - 1
+
+print(res)

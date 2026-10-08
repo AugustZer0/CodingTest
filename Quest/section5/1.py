@@ -18,3 +18,19 @@
 ▣ 출력예제 2
 99776
 """
+
+n, m = map(int, input().split())
+n = list(map(int, str(n)))
+stack = []
+
+for i in n:
+    while stack and m > 0 and i > stack[-1]:
+        m -= 1
+        stack.pop()
+    stack.append(i)
+
+if m!= 0:
+    stack = stack[:-m]
+
+for j in stack:
+    print(j, end='')

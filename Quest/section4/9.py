@@ -32,24 +32,30 @@ LRR
 n = int(input())
 arr = list(map(int, input().split()))
 
-tmp = 0
-result = ""
+lt, rt = 0, n - 1
+tmp = []
+last = 0
+res = ""
 
-while arr:
-    if arr[0] > tmp:
-        if arr[0] > arr[-1] > tmp:
-            tmp = arr.pop()
-            result += "R"
-        else:
-            tmp = arr.pop(0)
-            result += "L"
-    elif arr[-1] > tmp:
-        tmp = arr.pop()
-        result += "L"
-    else:
+while lt <= rt:
+    # 임시로 두 값을 받아둠
+    if arr[lt] > last:
+        tmp.append((arr[lt], 'L'))
+    if arr[rt] > last:
+        tmp.append((arr[rt], 'R'))
+    tmp.sort()
+    if len(tmp) == 0:
         break
+    # 정렬해서 작은 숫자를 last로 변경하고, 작았던 L과 R 중 하나를 가져옴
+    else:
+        res += tmp[0][1]
+        last = tmp[0][0]
+        # L이었으면 왼쪽 포인터 한칸 이동
+        if tmp[0][1] == 'L':
+            lt += 1
+        else:
+            rt -= 1
+    tmp.clear()
 
-print(len(result))
-print(result)
-
-# 투포인터로도 가능함
+print(len(res))
+print(res)

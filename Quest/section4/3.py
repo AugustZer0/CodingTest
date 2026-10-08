@@ -21,3 +21,34 @@ DVD를 가급적 줄이려고 한다. 고민 끝에 지니레코드는 M개의 D
 ▣ 출력예제 1
 17
 """
+
+"""
+최소 용량 크기를 구해야 하니 용량 크기(곡의 분)을 lt, rt로 잡으면 됨
+"""
+
+n, m = map(int, input().split())
+arr = list(map(int, input().split()))
+
+lt = max(arr)
+rt = sum(arr)
+
+def Count(capacity):
+    cnt = 1
+    s = 0
+    for x in arr:
+        if s + x > capacity:
+            cnt += 1
+            s = x
+        else:
+            s += x
+    return cnt
+
+while lt <= rt:
+    mid = (lt + rt) // 2
+    if Count(mid) <= m:
+        res = mid
+        rt = mid - 1
+    else:
+        lt = mid + 1
+
+print(res)

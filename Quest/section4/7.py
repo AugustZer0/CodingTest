@@ -26,14 +26,15 @@ M회의 높이 조정을 마친 후 가장 높은곳과 가장 낮은 곳의 차
 ▣ 출력예제 1
 20
 """
+
 l = int(input())
-arr = list(map(int, input().split()))
+arr = sorted(list(map(int, input().split())))
 m = int(input())
 
-arr.sort()
+
 for _ in range(m):
     arr[0] += 1
-    arr[l - 1] -= 1
+    arr[-1] -= 1
     arr.sort()
 
-print(arr[l - 1] - arr[0])
+print(arr[-1] - arr[0])

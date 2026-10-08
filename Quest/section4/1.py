@@ -15,6 +15,10 @@
 3
 """
 
+"""
+내가 어떤것을 구할건지 확실히 생각. 이번 경우에는 위치 번호를 출력하기에 lt, rt는 arr의 값이 아닌 index를 써야함
+"""
+
 n, m = map(int, input().split())
 
 arr = list(map(int, input().split()))
@@ -25,10 +29,10 @@ rt = n - 1
 
 while lt <= rt:
     mid = (lt + rt) // 2
-    if arr[mid] > m:
+    if arr[mid] == m:
+        print(mid + 1)
+        break
+    elif arr[mid] > m:
         rt = mid - 1
     elif arr[mid] < m:
         lt = mid + 1
-    else:
-        print(mid + 1)
-        break

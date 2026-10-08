@@ -20,24 +20,23 @@ N명의 승객 몸무게가 주어졌을 때 승객 모두가 탈출하기 위�
 
 from collections import deque
 
-n, limit = map(int, input().split())
-
-arr = list(map(int, input().split()))
-arr.sort()
-queue = deque(arr)
+n, m = map(int, input().split())
+arr = sorted(list(map(int, input().split())))
 
 cnt = 0
+
+queue = deque(arr)
 
 while queue:
     if len(queue) == 1:
         cnt += 1
         break
-    if queue[0] + queue[-1] > limit:
+    if queue[0] + queue[-1] > m:
         queue.pop()
         cnt += 1
     else:
-        queue.popleft()
         queue.pop()
+        queue.popleft()
         cnt += 1
 
 print(cnt)

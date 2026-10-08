@@ -29,20 +29,20 @@
 """
 
 n = int(input())
+
 arr = []
 
 for _ in range(n):
     h, w = map(int, input().split())
     arr.append((h, w))
-
 arr.sort(reverse=True)
 
-tmp = 0
+largest = 0
 cnt = 0
 
-for x, y in arr:
-    if y > tmp:
+for height, weight in arr:
+    if weight > largest:
         cnt += 1
-        tmp = y
+        largest = weight
 
 print(cnt)

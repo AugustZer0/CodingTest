@@ -21,14 +21,15 @@
 예제설명
 (2, 3) , (3, 5), (5, 7)이 회의실을 이용할 수 있다.
 """
-n = int(input())
-arr = []
 
+n = int(input())
+
+arr = []
 for _ in range(n):
     s, e = map(int, input().split())
     arr.append((s, e))
 
-arr.sort(key=lambda x : (x[1], x[0]))
+arr.sort(key=lambda x: (x[1], x[0]))
 
 et = 0
 cnt = 0
@@ -37,6 +38,4 @@ for s, e in arr:
     if s >= et:
         cnt += 1
         et = e
-
 print(cnt)
-

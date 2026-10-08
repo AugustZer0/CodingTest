@@ -21,3 +21,17 @@ n과 1부터 n까지의 수를 사용하여 이루어진 수열의 역수열이 
 ▣ 출력예제 1
 4 8 6 2 5 1 3 7
 """
+
+n = int(input())
+arr = list(map(int, input().split()))
+res = [0] * n
+
+for i in range(n):
+    for j in range(n):
+        if arr[i] == 0 and res[j] == 0:
+            res[j] = i + 1
+            break
+        elif res[j] == 0:
+            arr[i] -= 1
+
+print(*res, end=' ')
