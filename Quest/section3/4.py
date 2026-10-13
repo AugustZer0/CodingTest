@@ -40,5 +40,6 @@ if p1 < n:
     result.extend(n_arr[p1:])
 if p2 < m:
     result.extend(m_arr[p2:])
-print(result)
+
+print(*result)
 
