@@ -49,31 +49,29 @@ M개의 회전명령을 실행하고 난 후 아래와 같이 마당의 모래�
 362
 """
 n = int(input())
-
-n_arr = [list(map(int, input().split())) for _ in range(n)]
+arr = [list(map(int, input().split())) for _ in range(n)]
 
 m = int(input())
-m_arr = [list(map(int, input().split())) for _ in range(m)]
 
-total = 0
-start = 0
-end = n
+start, end = 0, n
+result = 0
 
-for i in m_arr:
-    if i[1] == 0:
-        n_arr[i[0]-1] = n_arr[i[0]-1][i[2]:] + n_arr[i[0]-1][:i[2]]
-    elif i[1] == 1:
-        n_arr[i[0]-1] = n_arr[i[0]-1][-i[2]:] + n_arr[i[0]-1][:-i[2]]
+for _ in range(m):
+    # x는 행번호, y는 방향, z는 회전하는 격자의 수
+    x, y, z = map(int, input().split())
+    z %= n
+    if y == 0:
+        arr[x-1] = arr[x-1][z:] + arr[x-1][:z]
+    if y == 1:
+        arr[x-1] = arr[x-1][-z:] + arr[x-1][:-z]
 
-for a in range(n):
-    for b in range(start, end):
-        total += n_arr[a][b]
-
-    if a < n // 2:
+for i in range(n):
+    for j in range(start, end):
+        result += arr[i][j]
+    if i < n // 2:
         start += 1
         end -= 1
     else:
         start -= 1
         end += 1
-
-print(total)
+print(result)

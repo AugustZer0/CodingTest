@@ -12,7 +12,7 @@ import sys
 import tempfile
 import time
 
-SOLUTION = "3/6.py"  # ← 여기에 직접 입력
+SOLUTION = "3/7.py"  # ← 여기에 직접 입력
 TIME_LIMIT = 1  # 초
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -29,6 +29,13 @@ def find_problem_dir():
         if m and problem in re.findall(r"\d+", m.group(1)):
             return os.path.join(section_dir, name)
     sys.exit(f"섹션 {section}에서 {problem}번 문제 폴더를 찾지 못했습니다.")
+
+
+def decode(raw):
+    # 일부 정답 파일은 BOM이 붙은 UTF-16이라 BOM을 보고 인코딩을 고른다
+    if raw.startswith((b"\xff\xfe", b"\xfe\xff")):
+        return raw.decode("utf-16")
+    return raw.decode("utf-8-sig", errors="replace")
 
 
 def normalize(text):
@@ -71,7 +78,7 @@ def main():
         error, elapsed, out = run(solution, os.path.join(problem_dir, f"in{n}.txt"))
         if error is None:
             with open(os.path.join(problem_dir, f"out{n}.txt"), "rb") as f:
-                expected = f.read().decode("utf-8", errors="replace")
+                expected = decode(f.read())
             error = None if normalize(out) == normalize(expected) else "오답"
 
         if error is None:

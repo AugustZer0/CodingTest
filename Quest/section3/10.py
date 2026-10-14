@@ -24,30 +24,28 @@
 첫째 줄에 “YES" 또는 ”NO"를 출력하세요.
 """
 
-arr = [list(map(int, input().split())) for _ in range(9)]
-
-
 def check_sudoku():
     for i in range(9):
-        col_set = set()
-        row_set = set()
+        row = set()
+        column = set()
         for j in range(9):
-            col_set.add(arr[j][i])
-            row_set.add(arr[i][j])
-
-        if len(row_set) != 9 or len(col_set) != 9:
+            row.add(sudoku[i][j])
+            column.add(sudoku[j][i])
+        if len(row) != 9 or len(column) != 9:
             return False
 
     for i in range(0, 9, 3):
         for j in range(0, 9, 3):
-            box_set = set()
-            for x in range(3):
-                for y in range(3):
-                    box_set.add(arr[i+x][j+y])
-            if len(box_set) != 9:
+            box = set()
+            for a in range(3):
+                for b in range(3):
+                    box.add(sudoku[i+a][j+b])
+            if len(box) != 9:
                 return False
-
     return True
+
+
+sudoku = [list(map(int, input().split())) for _ in range(9)]
 
 if check_sudoku():
     print("YES")
