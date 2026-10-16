@@ -9,6 +9,7 @@ result = ""
 while arr:
     l, r = arr[0], arr[-1]
     candidates = []
+
     if l > last:
         candidates.append((l, "L"))
     if r > last:
@@ -20,11 +21,12 @@ while arr:
     candidates.sort()
 
     last, d = candidates[0]
-    result += d
     if d == "L":
         arr.popleft()
-    else:
+        result += "L"
+    if d == "R":
         arr.pop()
+        result += "R"
 
 print(len(result))
 print(result)
