@@ -33,6 +33,9 @@
 5
 2
 """
+
+
+
 import heapq as hq
 
 a = []

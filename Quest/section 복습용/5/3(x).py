@@ -1,9 +1,9 @@
-s = input()
+text = input()
 stack = []
 res = ''
 
-for x in s:
-    if x.isdecimal():
+for x in text:
+    if x.isdigit():
         res += x
     else:
         if x == '(':
@@ -13,7 +13,7 @@ for x in s:
                 res += stack.pop()
             stack.append(x)
         elif x == '+' or x == '-':
-            while stack and (stack[-1] != '('):
+            while stack and stack[-1] != '(':
                 res += stack.pop()
             stack.append(x)
         elif x == ')':

@@ -1,26 +1,26 @@
-s = input()
-
+text = input()
 stack = []
 
-for x in s:
+for x in text:
     if x.isdigit():
         stack.append(int(x))
     else:
-        if x == '+':
-            n1 = stack.pop()
-            n2 = stack.pop()
-            stack.append(n2 + n1)
-        elif x == '-':
-            n1 = stack.pop()
-            n2 = stack.pop()
-            stack.append(n2 - n1)
-        elif x == '*':
+        if x == "*":
             n1 = stack.pop()
             n2 = stack.pop()
             stack.append(n2 * n1)
-        elif x == '/':
+        elif x == "/":
             n1 = stack.pop()
             n2 = stack.pop()
             stack.append(n2 / n1)
+        elif x == "+":
+            n1 = stack.pop()
+            n2 = stack.pop()
+            stack.append(n2 + n1)
+        elif x == "-":
+            n1 = stack.pop()
+            n2 = stack.pop()
+            stack.append(n2 - n1)
+
 
 print(stack[0])
