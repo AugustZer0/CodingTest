@@ -1,15 +1,14 @@
 n = int(input())
-d1 = dict()
+p = dict()
 
 for _ in range(n):
     word = input()
-    d1[word] = 1
+    p[word] = 1
 
 for _ in range(n - 1):
     word = input()
-    d1[word] -= 1
+    p[word] -= 1
 
-for key, val in d1.items():
+for key, val in p.items():
     if val == 1:
         print(key)
-        break

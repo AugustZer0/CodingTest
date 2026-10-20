@@ -12,7 +12,7 @@ import sys
 import tempfile
 import time
 
-SOLUTION = "5/11(x).py"  # ← 여기에 직접 입력
+SOLUTION = "5/7(x).py"  # ← 여기에 직접 입력
 TIME_LIMIT = 1  # 초
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
