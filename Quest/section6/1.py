@@ -1,10 +1,10 @@
-def recursive(x):
+def DFS(x):
     if x == 0:
         return
     else:
-        recursive(x // 2)
-        print(x%2, end='')
+        DFS(x // 2)
+        print(x % 2, end='')
 
 if __name__ == "__main__":
     n = int(input())
-    recursive(n)
+    DFS(n)

@@ -10,6 +10,7 @@ def DFS(v):
         ch[v] = 0
         DFS(v + 1)
 
+
 if __name__ == "__main__":
     n = int(input())
     ch = [0] * (n + 1)
