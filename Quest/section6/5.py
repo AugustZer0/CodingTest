@@ -1,5 +1,6 @@
 def DFS(L, s, ts):
     global res
+    # 현재 상태에서 앞으로 남은 원소를 전부 다 골라도 res 보다 낮으면 가지침
     if s + (total - ts) < res:
         return
     if s > c:

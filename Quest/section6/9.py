@@ -1,14 +1,19 @@
 import sys
 
 def DFS(L, s):
+    # 모든 트리를 다 타고, s 가 f일때,
     if L == n and s == f:
+        # p에 담아둔 순열 호출
         for x in p:
             print(x, end=' ')
+        # 맞다면 시스템 종료, 한줄만 뽑기위해
         sys.exit(0)
     else:
         for i in range(1, n + 1):
+            # 순열 중복 방지
             if ch[i] == 0:
                 ch[i] = 1
+                # 순열 저장
                 p[L] = i
                 DFS(L + 1, s + (p[L] * b[L]))
                 ch[i] = 0
