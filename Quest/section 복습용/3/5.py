@@ -1,7 +1,6 @@
 n, m = map(int, input().split())
 arr = list(map(int, input().split()))
 
-
 lt = 0
 rt = 1
 total = arr[lt]
@@ -18,7 +17,7 @@ while True:
         cnt += 1
         total -= arr[lt]
         lt += 1
-    else:
+    elif total > m:
         total -= arr[lt]
         lt += 1
 

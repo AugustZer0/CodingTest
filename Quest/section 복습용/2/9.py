@@ -1,14 +1,15 @@
 n = int(input())
-best = 0
+res = 0
 
 for _ in range(n):
-    a, b, c = sorted(map(int, input().split()))
-    if a == b == c:
-       prize = 10000 + a * 1000
-    elif b == a or b == c:
-        prize = 1000 + b * 100
+    x, y, z = sorted(list(map(int, input().split())), reverse=True)
+    if x == z:
+        prize = 10000 + x * 1000
+    elif y == x or y == z:
+        prize = 1000 + y * 100
     else:
-        prize = 100 * c
-    best = max(best, prize)
+        prize = 100 * x
 
-print(best)
+    res = max(res, prize)
+
+print(res)

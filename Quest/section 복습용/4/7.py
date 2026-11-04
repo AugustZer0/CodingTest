@@ -1,10 +1,11 @@
 l = int(input())
-arr = sorted(list(map(int, input().split())))
+arr = list(map(int, input().split()))
 m = int(input())
 
 for _ in range(m):
+    arr.sort()
     arr[0] += 1
     arr[-1] -= 1
-    arr.sort()
 
+arr.sort()
 print(arr[-1] - arr[0])

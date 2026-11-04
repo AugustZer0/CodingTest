@@ -2,31 +2,34 @@ from collections import deque
 
 n = int(input())
 arr = deque(list(map(int, input().split())))
-
 last = 0
-result = ""
+result = ''
 
-while arr:
-    l, r = arr[0], arr[-1]
+while True:
     candidates = []
 
-    if l > last:
-        candidates.append((l, "L"))
-    if r > last:
-        candidates.append((r, "R"))
+    if len(arr) == 0:
+        break
+
+    if arr[0] > last:
+        candidates.append((arr[0], "L"))
+    if arr[-1] > last:
+        candidates.append((arr[-1], "R"))
 
     if not candidates:
         break
 
     candidates.sort()
+    last, d = candidates[0][0], candidates[0][1]
 
-    last, d = candidates[0]
     if d == "L":
-        arr.popleft()
         result += "L"
-    if d == "R":
-        arr.pop()
+        arr.popleft()
+
+    elif d == "R":
         result += "R"
+        arr.pop()
+
 
 print(len(result))
 print(result)

@@ -1,18 +1,14 @@
 def digit_sum(x):
-    total = 0
-    for i in x:
-        total += int(i)
-    return total
+    return sum(int(i) for i in x)
 
-n = int(input())
-arr = input().split()
+if __name__ == "__main__":
+    n = int(input())
+    arr = list(input().split())
+    tmp = 0
 
-max_value = 0
-
-for x in arr:
-    s = digit_sum(x)
-    if s > max_value:
-        max_value = s
-        res = x
-
-print(res)
+    for k, v in enumerate(arr):
+        s = digit_sum(v)
+        if tmp < s:
+            tmp = s
+            i = k
+    print(arr[i])

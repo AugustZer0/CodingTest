@@ -1,20 +1,21 @@
 n = int(input())
 arr = [list(map(int, input().split())) for _ in range(n)]
 
-largest = 0
+
+cross_sum = 0
+reverse_cross_sum = 0
+result = 0
 
 for i in range(n):
-    sum_row = 0
-    sum_col = 0
+    col_sum = 0
+    row_sum = 0
     for j in range(n):
-        sum_row += arr[j][i]
-        sum_col += arr[i][j]
-    largest = max(largest, sum_row, sum_col)
+        col_sum += arr[j][i]
+        row_sum += arr[i][j]
+    result = max(result, col_sum, row_sum)
 
-sum_cross = 0
-sum_reverse_cross = 0
-for a in range(n):
-    sum_cross += arr[a][a]
-    sum_reverse_cross += arr[a][n-1-a]
+for i in range(n):
+    cross_sum += arr[i][i]
+    reverse_cross_sum += arr[i][n - i - 1]
 
-print(max(largest,sum_cross, sum_reverse_cross))
+print(max(result, cross_sum, reverse_cross_sum))

@@ -4,15 +4,16 @@ def reverse(x):
 def isPrime(x):
     if x < 2:
         return False
-    for i in range(2, int((x ** 0.5) + 1)):
+    for i in range(2, int(x ** 0.5) + 1):
         if x % i == 0:
             return False
     return True
 
-n = int(input())
-arr = input().split()
+if __name__ == "__main__":
+    n = int(input())
+    arr = list(input().split())
 
-for x in arr:
-    res = int(reverse(x))
-    if isPrime(res):
-        print(res, end=" ")
+    for i in arr:
+        num = int(reverse(i))
+        if isPrime(num):
+            print(num, end=' ')

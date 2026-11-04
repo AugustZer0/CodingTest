@@ -1,14 +1,13 @@
 n = int(input())
 arr = list(map(int, input().split()))
-
-current = 0
-result = 0
+total = 0
+cur = 0
 
 for i in arr:
     if i == 1:
-        current += 1
+        cur += 1
+        total += cur
     else:
-        current = 0
-    result += current
+        cur = 0
 
-print(result)
+print(total)
