@@ -17,29 +17,22 @@
 12
 """
 
-s = input()
-
+text = input()
 stack = []
 
-for x in s:
+for x in text:
     if x.isdigit():
         stack.append(int(x))
     else:
-        if x == '+':
-            n1 = stack.pop()
-            n2 = stack.pop()
+        n1 = stack.pop()
+        n2 = stack.pop()
+        if x == "+":
             stack.append(n2 + n1)
-        elif x == '-':
-            n1 = stack.pop()
-            n2 = stack.pop()
+        elif x == "-":
             stack.append(n2 - n1)
-        elif x == '*':
-            n1 = stack.pop()
-            n2 = stack.pop()
+        elif x == "*":
             stack.append(n2 * n1)
-        elif x == '/':
-            n1 = stack.pop()
-            n2 = stack.pop()
+        elif x == "/":
             stack.append(n2 / n1)
 
-print(stack[0])
+print(*stack)
