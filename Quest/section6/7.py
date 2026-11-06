@@ -1,7 +1,7 @@
 def DFS(L, s):
     global res
     # 최솟값 기준 가지치기
-    if L > res:
+    if L >= res:
         return
 
     # 목표 금액 초과 방지

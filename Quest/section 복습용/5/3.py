@@ -1,27 +1,27 @@
 s = input()
 stack = []
-res = ''
+result = ''
 
 for x in s:
     if x.isdigit():
-        res += x
+        result += x
     else:
-        if x == "(":
+        if x == '(':
             stack.append(x)
-        elif x == "*" or x == "/":
+        elif x == '*' or x == '/':
             while stack and (stack[-1] == "*" or stack[-1] == "/"):
-                res += stack.pop()
+                result += stack.pop()
             stack.append(x)
-        elif x == "+" or x == "-":
+        elif x == '+' or x == '-':
             while stack and stack[-1] != "(":
-                res += stack.pop()
+                result += stack.pop()
             stack.append(x)
-        elif x == ")":
+        elif x == ')':
             while stack and stack[-1] != "(":
-                res += stack.pop()
+                result += stack.pop()
             stack.pop()
 
 while stack:
-    res += stack.pop()
+    result += stack.pop()
 
-print(res)
+print(result)
